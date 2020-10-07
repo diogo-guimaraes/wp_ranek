@@ -1,7 +1,7 @@
 <!--
-add(custom-post-type): Transacao
-refactor(custom-post-type): Transacao   
-rm(custom-post-type): Transacao
+add(custom-post-type): transacao
+refactor(custom-post-type): transacao   
+rm(custom-post-type): transacao
 -->
 <?php 
 function registrar_cpt_transacao(){

@@ -1,7 +1,7 @@
 <!-- 
-add(custom-post-type): Produto
-refactor(custom-post-type): Produto   
-rm(custom-post-type): Produto
+add(custom-post-type): produto
+refactor(custom-post-type): produto   
+rm(custom-post-type): produto
 -->
 <?php 
 function registrar_cpt_produto(){

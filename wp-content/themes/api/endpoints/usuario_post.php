@@ -1,10 +1,7 @@
-<!-- 
-add(endpoints): usuario_post
-refactor(endpoints): usuario_post   
-rm(endpoints): usuario_post
--->
 <?php
-
+// add(endpoints): usuario_post
+// refactor(endpoints): usuario_post   
+// rm(endpoints): usuario_post
 function api_usuario_post($request)
 {
   $email = sanitize_email($request['email']);

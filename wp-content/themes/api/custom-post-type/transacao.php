@@ -1,9 +1,7 @@
-<!--
-add(custom-post-type): transacao
-refactor(custom-post-type): transacao   
-rm(custom-post-type): transacao
--->
 <?php 
+// add(custom-post-type): transacao
+// refactor(custom-post-type): transacao   
+// rm(custom-post-type): transacao
 function registrar_cpt_transacao(){
   register_post_type('transacao', array(
     'label' => 'Transacao',

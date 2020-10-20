@@ -234,6 +234,11 @@ class Jwt_Auth_Public
         }
 
         if (!$auth) {
+            $allHeaders = getallheaders();
+            $auth = isset($allHeaders['Authorization']) ? $allHeaders['Authorization'] : false;
+        }
+
+        if (!$auth) {
             return new WP_Error(
                 'jwt_auth_no_auth_header',
                 'Authorization header not found.',

@@ -1,9 +1,9 @@
-<!--
-add(api): functions
-refactor(api): functions   
-rm(api): functions
--->
+
 <?php
+
+// add(api): functions
+// refactor(api): functions   
+// rm(api): functions
 
 $template_diretorio = get_template_directory();
 

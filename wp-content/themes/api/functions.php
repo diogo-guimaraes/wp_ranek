@@ -13,6 +13,8 @@ require_once($template_diretorio . "/endpoints/usuario_post.php");
 require_once($template_diretorio . "/endpoints/usuario_get.php");
 require_once($template_diretorio . "/endpoints/usuario_put.php");
 
+require_once($template_diretorio . "/endpoints/produto_post.php");
+
 function expire_token(){
   return time() + (60 * 60 * 24);
 }

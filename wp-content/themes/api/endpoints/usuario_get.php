@@ -20,6 +20,8 @@ function api_usuario_get($request)
       "cidade" => $user_meta['cidade'][0],
       "estado" => $user_meta['estado'][0],
     );
+  }else {
+    $response = new WP_Error('permissao', 'Usuário não possui permissão', array('status' => 401));
   }
 
 

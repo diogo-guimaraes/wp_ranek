@@ -4,9 +4,10 @@
 // rm(endpoints): produto_get
 function api_produto_get($request)
 { 
-
-
-  return rest_ensure_response($response);
+  $slug = $request["slug"];
+  $post_id = get_produto_id_by_slug($slug);
+  
+  return rest_ensure_response($slug);
 }
 
 function registrar_api_produto_get() {

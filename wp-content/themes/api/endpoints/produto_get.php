@@ -3,7 +3,7 @@
 // refactor(endpoints): produto_get   
 // rm(endpoints): produto_get
 
-function produtos_scheme($slug){
+function produto_scheme($slug){
   $post_id = get_produto_id_by_slug($slug);
   if ($post_id) {
     // get_post_meta-> retorna todas as informações pelo id
@@ -40,7 +40,7 @@ function produtos_scheme($slug){
 
 function api_produto_get($request)
 { 
-  $response = produtos_scheme($request["slug"]);
+  $response = produto_scheme($request["slug"]);
   return rest_ensure_response($response);
 }
 
@@ -75,16 +75,37 @@ function api_produtos_get($request) {
   // para retornar todos os itens do usuário específico
   $usuario_id = sanitize_text_field($request['usuario_id']);
 
+  $usuario_id_query = null;
+  if($usuario_id) {
+    $usuario_id_query = array(
+      'key' => 'usuario_id',
+      'value' => $usuario_id,
+      'compare' => '='
+    );
+  }
+
   $query = array(
     'post_type' => 'produto',
     'posts_per_page' => $_limit,
     'paged' => $_page,
     's' => $q,
+    'meta_query' => array(
+      $usuario_id_query,     
+    )
   );
   
   $loop = new WP_Query($query);
-  $posts = $loop->posts; 
-  return rest_ensure_response($posts);
+  $posts = $loop->posts;
+  $total = $loop->found_posts;
+
+  $produtos = array();
+  foreach ($posts as $key => $value) {
+    // usa a função para passar os objetos
+    // vai passar por  cada posta e trazer a resposta que queremos
+    $produtos[] = produto_scheme($value->post_name);
+  }
+
+  return rest_ensure_response($produtos);
 }  
 
 ?>

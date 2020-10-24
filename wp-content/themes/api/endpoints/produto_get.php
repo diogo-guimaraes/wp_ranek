@@ -84,13 +84,20 @@ function api_produtos_get($request) {
     );
   }
 
+  $vendido = array(
+    'key' => 'vendido',
+    'value' => 'false',
+    'compare' => '='
+  );
+
   $query = array(
     'post_type' => 'produto',
     'posts_per_page' => $_limit,
     'paged' => $_page,
     's' => $q,
     'meta_query' => array(
-      $usuario_id_query,     
+      $usuario_id_query,
+      $vendido,     
     )
   );
   

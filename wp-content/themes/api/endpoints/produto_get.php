@@ -112,7 +112,9 @@ function api_produtos_get($request) {
     $produtos[] = produto_scheme($value->post_name);
   }
 
-  return rest_ensure_response($produtos);
+  $response = rest_ensure_response($produtos);
+  $response->header('X-Total-Count', $total);
+  return $response;
 }  
 
 ?>

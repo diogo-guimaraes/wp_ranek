@@ -67,9 +67,14 @@ function registrar_api_produtos_get() {
 add_action('rest_api_init', 'registrar_api_produto_get');
 
 function api_produtos_get($request) {
-
-
-
+  // permite parametro para busca
+  $q = sanitize_text_field($request['q']) ?: '';
+  // permite parametro para buscar por página
+  $_page = sanitize_text_field($request['_page']) ?: 0;
+  // limite de produtos por página
+  $_limit = sanitize_text_field($request['_limit']) ?: 9;
+  // para retornar todos os itens do usuário específico
+  $usuario_id = sanitize_text_field($request['usuario_id']);
 }
   
 

@@ -75,6 +75,18 @@ function api_produtos_get($request) {
   $_limit = sanitize_text_field($request['_limit']) ?: 9;
   // para retornar todos os itens do usuário específico
   $usuario_id = sanitize_text_field($request['usuario_id']);
+
+  $query = array(
+    'post_type' => 'produto',
+    'posts_per_page' => $_limit,
+    'paged' => $_page,
+    's' => $q,
+    'meta_query' => array(
+      $usuario_id_query,
+      $vendido,
+    )
+  );
+  
 }
   
 

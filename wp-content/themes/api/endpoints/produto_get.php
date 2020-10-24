@@ -3,10 +3,8 @@
 // refactor(endpoints): produto_get   
 // rm(endpoints): produto_get
 
-function produtos_scheme($request){
-  
+function produtos_scheme($slug){
   $post_id = get_produto_id_by_slug($slug);
-
   if ($post_id) {
     // get_post_meta-> retorna todas as informações pelo id
     $post_meta = get_post_meta($post_id);
@@ -54,6 +52,7 @@ function registrar_api_produto_get() {
     ),
   ));
 }
+add_action('rest_api_init', 'registrar_api_produto_get');
 
 function registrar_api_produtos_get() {
   register_rest_route('api', '/produto', array(
@@ -63,8 +62,8 @@ function registrar_api_produtos_get() {
     ),
   ));
 }
+add_action('rest_api_init', 'registrar_api_produtos_get');
 
-add_action('rest_api_init', 'registrar_api_produto_get');
 
 function api_produtos_get($request) {
   // permite parametro para busca
@@ -81,13 +80,11 @@ function api_produtos_get($request) {
     'posts_per_page' => $_limit,
     'paged' => $_page,
     's' => $q,
-    'meta_query' => array(
-      $usuario_id_query,
-      $vendido,
-    )
   );
   
-}
-  
+  $loop = new WP_Query($query);
+  $posts = $loop->posts; 
+  return rest_ensure_response($posts);
+}  
 
 ?>

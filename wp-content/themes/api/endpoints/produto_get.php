@@ -8,11 +8,21 @@ function api_produto_get($request)
   $post_id = get_produto_id_by_slug($slug);
 
     if ($post_id) {
-      //todas as informações de preço
+      // get_post_meta-> retorna todas as informações pelo id
       $post_meta = get_post_meta($post_id);
       $images = get_attached_media('image', $post_id);
       $images_array = null;
-      
+
+      if($images) {
+        $images_array = array();
+        foreach($images as $key => $value) {
+          $images_array[] = array(
+            'titulo' => $value->post_name,
+            'src' => $value->guid,
+          );
+        }
+      }
+
       $response = array(
         "id" => $slug, 
         "fotos" => $images_array,

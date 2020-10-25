@@ -31,24 +31,11 @@ function api_transacao_post($request)
       ),
     );
 
-    $produto_id = wp_insert_post($response);
-    $response['id'] = get_post_field('post_name', $produto_id);
-
-    $files = $request->get_file_params();
-
-    if($files) {
-      require_once(ABSPATH . 'wp-admin/includes/image.php');
-      require_once(ABSPATH . 'wp-admin/includes/file.php');
-      require_once(ABSPATH . 'wp-admin/includes/media.php');
-
-      foreach ($files as $file => $array) {
-        media_handle_upload($file, $produto_id);
-      }
-    }
+    $post_id = $produto_id = wp_insert_post($response);
+    
   }else {
     $response = new WP_Error('email', 'Email já cadastrado.', array('status' => 403));
   }
-  //   return rest_ensure_response($response);
   return rest_ensure_response($response);
 }
 

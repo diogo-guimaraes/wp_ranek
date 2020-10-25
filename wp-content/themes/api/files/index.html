@@ -19,7 +19,7 @@
 
     const options = {
       headers: {
-        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3dwX3JhbmVrIiwiaWF0IjoxNjAzMzgwMDE0LCJuYmYiOjE2MDMzODAwMTQsImV4cCI6MTYwMzk4NDgxNCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiNiJ9fX0.PBt12YrJIlcM09z7P9pKBBHssUZ2T4zWgYJm9feRzEU"
+        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3dwX3JhbmVrIiwiaWF0IjoxNjAzNTU3MTM0LCJuYmYiOjE2MDM1NTcxMzQsImV4cCI6MTYwMzY0MzUzNCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.WHIRWfKaJYZULPel5xyVPbo9fL6aArbaZSzleYBil2k"
       }
     }
 
@@ -31,9 +31,9 @@
         form.append(files[i].name, files[i]);
       }
 
-      form.append("nome", "Notebook")
-      form.append("descricao", "Esse é usado")
-      form.append("preco", "1299")
+      form.append("nome", "Notebook DELL")
+      form.append("descricao", "Processador Intel Geração 7")
+      form.append("preco", "5.900,00")
   
       axios.post("http://localhost/wp_ranek/wp-json/api/produto", form, options);
     }
